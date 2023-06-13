@@ -1,0 +1,82 @@
+<html>
+<head>
+  <title>Pixels</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <script src="js/main.js"></script>
+</head>
+
+<body onload="init()">
+  <div class="container">
+
+    <input class="textBox" type="text" id="fillColorBox"
+           value="00ff00" maxLength="6" placeholder="Marker color"/> 
+
+    <br><br>
+
+    <input class="textBox" type="text" id="backgroundColorBox" 
+           value="ffffff" maxLength="6" placeholder="Background color"/>
+    
+    <br><br>
+
+    <input class="textBox" type="text" id="canvasSizeBox"  
+           value="20x20" maxLength="6" placeholder="Grid size"/> 
+
+    <br><br>
+
+    <div class="downloadButton" id="downloadButton">Download</div>
+
+    <br>
+    <canvas class="canvas" id="drawCanvas" width="400" height="400"></canvas>
+    <canvas class="canvas" id="gridCanvas" width="400" height="400"></canvas>
+  </div>
+</body>
+
+<script type="text/javascript">
+
+  function init() {
+      PixelGrid.init();
+
+      //SET FILLCOLOR
+      var fillColorBox = document.getElementById("fillColorBox");
+      fillColorBox.onkeyup = function(event){
+          if(PixelGrid.isValidColor(fillColorBox.value))
+          {
+              PixelGrid.updateFillColor(fillColorBox.value);
+          }
+      }
+
+      //SET BACKGROUND 
+      var backgroundColorBox = document.getElementById("backgroundColorBox");
+      backgroundColorBox.onkeyup = function(event){
+          if(PixelGrid.isValidColor(backgroundColorBox.value)){
+              console.log(backgroundColorBox.value);
+              PixelGrid.updateBackgroundColor(backgroundColorBox.value);
+              PixelGrid.setBackgroundColor();
+          }
+      }
+
+      //SET CANVAS SIZE
+      var canvasSizeBox = document.getElementById("canvasSizeBox");
+      canvasSizeBox.onkeyup = function(event){
+          if(PixelGrid.isValidCanvasSize(canvasSizeBox.value)) {
+              PixelGrid.setCanvasSize(canvasSizeBox.value);
+          }
+          else {
+              canvasSizeBox.value = "";
+          }
+      }
+
+      //PAINT GRID
+      var gridCanvas = document.getElementById("gridCanvas");
+      gridCanvas.onclick = function(event){
+          PixelGrid.paint(event);
+      }
+
+      var downloadButton = document.getElementById("downloadButton");
+      downloadButton.onclick = function(event){
+          download(document.getElementById("drawCanvas"),"pixels");
+      }
+  }
+
+</script>
+</html>

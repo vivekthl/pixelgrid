@@ -26,7 +26,7 @@ var PixelGrid = new function(){
     var drawCanvas;
     var drawContext;
 
-    var fillColor = "#00ff00";
+    var fillColor = "#abcd";
     var backgroundColor = "#ffffff";
 
 

@@ -6,6 +6,3 @@ Web app to draw with pixels.
 * Click again on same pixel to clear the pixel.
 * Changing background color will clear your drawing.
 * Click on `Download` link to download the pixel-grid.
-
-#### Sample
-![flower](https://raw.githubusercontent.com//assets/main/pixelgrid/drawings/flower.png)
